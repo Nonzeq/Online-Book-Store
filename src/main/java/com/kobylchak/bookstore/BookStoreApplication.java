@@ -4,7 +4,6 @@ import com.kobylchak.bookstore.model.Book;
 import com.kobylchak.bookstore.service.BookService;
 import java.math.BigDecimal;
 import lombok.RequiredArgsConstructor;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
