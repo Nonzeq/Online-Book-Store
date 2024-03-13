@@ -3,16 +3,15 @@ package com.kobylchak.bookstore;
 import com.kobylchak.bookstore.model.Book;
 import com.kobylchak.bookstore.service.BookService;
 import java.math.BigDecimal;
-import lombok.RequiredArgsConstructor;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.Bean;
 
 @SpringBootApplication
-@RequiredArgsConstructor
 public class BookStoreApplication {
-
+    @Autowired
     private BookService bookService;
 
     public static void main(String[] args) {
