@@ -8,14 +8,12 @@ import com.kobylchak.bookstore.repository.BookRepository;
 import jakarta.persistence.EntityNotFoundException;
 import java.util.List;
 import java.util.Optional;
-import java.util.stream.Collectors;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
 @Service
 @RequiredArgsConstructor
 public class BookServiceImpl implements BookService {
-
     private final BookRepository bookRepository;
     private final BookMapper bookMapper;
 
@@ -36,8 +34,7 @@ public class BookServiceImpl implements BookService {
     public BookDto getBookById(Long id) {
         Optional<Book> bookById = bookRepository.findBookById(id);
         Book book = bookById.orElseThrow(
-                () -> new EntityNotFoundException("Book by id: " + id + "not found")
-        );
+                () -> new EntityNotFoundException("Book by id: " + id + "not found"));
         return bookMapper.toDto(book);
     }
 }
