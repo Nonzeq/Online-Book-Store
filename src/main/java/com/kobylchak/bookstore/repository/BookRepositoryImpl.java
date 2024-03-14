@@ -2,6 +2,7 @@ package com.kobylchak.bookstore.repository;
 
 import com.kobylchak.bookstore.model.Book;
 import java.util.List;
+import java.util.Optional;
 import lombok.RequiredArgsConstructor;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
@@ -44,6 +45,13 @@ public class BookRepositoryImpl implements BookRepository {
             return fromBook.getResultList();
         } catch (Exception e) {
             throw new RuntimeException("Can't get all books", e);
+        }
+    }
+
+    @Override
+    public Optional<Book> findBookById(Long id) {
+        try (Session session = sessionFactory.openSession()) {
+            return Optional.ofNullable(session.find(Book.class, id));
         }
     }
 }

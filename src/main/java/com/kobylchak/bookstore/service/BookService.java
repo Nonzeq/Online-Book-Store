@@ -1,10 +1,14 @@
 package com.kobylchak.bookstore.service;
 
+import com.kobylchak.bookstore.dto.BookDto;
+import com.kobylchak.bookstore.dto.CreateBookRequestDto;
 import com.kobylchak.bookstore.model.Book;
 import java.util.List;
 
 public interface BookService {
-    Book save(Book book);
+    BookDto save(CreateBookRequestDto book);
 
-    List<Book> findAll();
+    List<BookDto> findAll();
+
+    BookDto getBookById(Long id);
 }
