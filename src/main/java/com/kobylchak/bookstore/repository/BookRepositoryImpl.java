@@ -1,8 +1,8 @@
 package com.kobylchak.bookstore.repository;
 
-import com.kobylchak.bookstore.model.Book;
 import java.util.List;
 import java.util.Optional;
+import com.kobylchak.bookstore.model.Book;
 import lombok.RequiredArgsConstructor;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
@@ -13,7 +13,6 @@ import org.springframework.stereotype.Repository;
 @Repository
 @RequiredArgsConstructor
 public class BookRepositoryImpl implements BookRepository {
-
     private final SessionFactory sessionFactory;
 
     @Override
