@@ -25,16 +25,39 @@ public class BookServiceImpl implements BookService {
 
     @Override
     public List<BookDto> findAll() {
-        return bookRepository.findAll().stream()
-                .map(bookMapper::toDto)
-                .toList();
+        return bookRepository.findAll().stream().map(bookMapper::toDto).toList();
     }
 
     @Override
     public BookDto getBookById(Long id) {
         Optional<Book> bookById = bookRepository.findBookById(id);
-        Book book = bookById.orElseThrow(
+        return bookMapper.toDto(bookById.orElseThrow(
+                () -> new EntityNotFoundException("Book by id: " + id + "not found")));
+    }
+
+    @Override
+    public void deleteById(Long id) {
+        bookRepository.deleteById(id);
+    }
+
+    @Override
+    public BookDto updateBookById(Long id, CreateBookRequestDto bookRequestDto) {
+        Book book = bookRepository.findBookById(id).orElseThrow(
                 () -> new EntityNotFoundException("Book by id: " + id + "not found"));
-        return bookMapper.toDto(book);
+        updateBook(bookRequestDto, book);
+        return bookMapper.toDto(bookRepository.save(book));
+    }
+
+    private void updateBook(CreateBookRequestDto source, Book target) {
+        target.setTitle(source.getTitle());
+        target.setAuthor(source.getAuthor());
+        target.setIsbn(source.getIsbn());
+        target.setPrice(source.getPrice());
+        if (source.getDescription() != null) {
+            target.setDescription(source.getDescription());
+        }
+        if (source.getCoverImage() != null) {
+            target.setCoverImage(source.getCoverImage());
+        }
     }
 }
