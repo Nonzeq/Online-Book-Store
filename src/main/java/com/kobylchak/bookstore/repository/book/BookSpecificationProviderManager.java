@@ -10,8 +10,8 @@ import org.springframework.stereotype.Component;
 @RequiredArgsConstructor
 @Component
 public class BookSpecificationProviderManager implements SpecificationProviderManager<Book> {
-
     private final List<SpecificationProvider<Book>> specificationProviders;
+
     @Override
     public SpecificationProvider<Book> getSpecificationProvider(String key) {
         return specificationProviders.stream()

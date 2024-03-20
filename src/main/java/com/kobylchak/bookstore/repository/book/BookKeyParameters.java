@@ -9,7 +9,9 @@ public enum BookKeyParameters {
     AUTHOR("author"),
     TITLE("title"),
     PRICE("price"),
-    ISBN("isbn");
+    ISBN("isbn"),
+    LOWER_PRICE_LIMIT("lowerPriceLimit"),
+    UPPER_PRICE_LIMIT("pricePriceLimit");
     private final String key;
 
     BookKeyParameters(String key) {

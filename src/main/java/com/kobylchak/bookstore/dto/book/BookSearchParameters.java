@@ -2,7 +2,6 @@ package com.kobylchak.bookstore.dto.book;
 
 import com.kobylchak.bookstore.dto.SearchParameters;
 import com.kobylchak.bookstore.repository.book.BookKeyParameters;
-import java.math.BigDecimal;
 import java.util.HashMap;
 import java.util.Map;
 import lombok.Data;
@@ -12,8 +11,8 @@ public class BookSearchParameters implements SearchParameters {
     private String title;
     private String author;
     private String isbn;
-    private BigDecimal upperPriceThreshold;
-    private BigDecimal lowerPriceThreshold;
+    private String upperPriceLimit;
+    private String lowerPriceLimit;
 
     @Override
     public Map<String, String> getParameters() {
@@ -21,13 +20,17 @@ public class BookSearchParameters implements SearchParameters {
         if (title != null) {
             parameters.put(BookKeyParameters.TITLE.getKey(), title);
         }
-
         if (author != null) {
             parameters.put(BookKeyParameters.AUTHOR.getKey(), author);
         }
-
         if (isbn != null) {
             parameters.put(BookKeyParameters.ISBN.getKey(), isbn);
+        }
+        if (upperPriceLimit != null) {
+            parameters.put(BookKeyParameters.UPPER_PRICE_LIMIT.getKey(), upperPriceLimit);
+        }
+        if (lowerPriceLimit != null) {
+            parameters.put(BookKeyParameters.LOWER_PRICE_LIMIT.getKey(), lowerPriceLimit);
         }
         return parameters;
     }
