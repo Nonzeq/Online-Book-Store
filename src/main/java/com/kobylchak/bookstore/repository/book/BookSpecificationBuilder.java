@@ -18,13 +18,14 @@ public class BookSpecificationBuilder implements SpecificationBuilder<Book> {
     public Specification<Book> build(SearchParameters searchParameters) {
         Specification<Book> spec = Specification.where(null);
         Map<String, String> parameters = searchParameters.getParameters();
-        for (Map.Entry<String, String> bookKeyParameters : parameters.entrySet()) {
-            String parameter = bookKeyParameters.getValue();
-            if (parameter != null && !parameter.isEmpty()) {
+        for (Map.Entry<String, String> bookKeyValueParameter : parameters.entrySet()) {
+            String keyParameter = bookKeyValueParameter.getKey();
+            String valueParameter = bookKeyValueParameter.getValue();
+            if (valueParameter != null && !valueParameter.isEmpty()) {
                 spec = spec.and(
                         bookSpecificationProviderManager
-                                .getSpecificationProvider(bookKeyParameters.getKey())
-                                .getSpecification(parameter)
+                                .getSpecificationProvider(keyParameter)
+                                .getSpecification(valueParameter)
                 );
             }
         }

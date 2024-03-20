@@ -17,21 +17,11 @@ public class BookSearchParameters implements SearchParameters {
     @Override
     public Map<String, String> getParameters() {
         Map<String, String> parameters = new HashMap<>();
-        if (title != null) {
-            parameters.put(BookKeyParameters.TITLE.getKey(), title);
-        }
-        if (author != null) {
-            parameters.put(BookKeyParameters.AUTHOR.getKey(), author);
-        }
-        if (isbn != null) {
-            parameters.put(BookKeyParameters.ISBN.getKey(), isbn);
-        }
-        if (upperPriceLimit != null) {
-            parameters.put(BookKeyParameters.UPPER_PRICE_LIMIT.getKey(), upperPriceLimit);
-        }
-        if (lowerPriceLimit != null) {
-            parameters.put(BookKeyParameters.LOWER_PRICE_LIMIT.getKey(), lowerPriceLimit);
-        }
+        parameters.put(BookKeyParameters.TITLE.getKey(), title);
+        parameters.put(BookKeyParameters.AUTHOR.getKey(), author);
+        parameters.put(BookKeyParameters.ISBN.getKey(), isbn);
+        parameters.put(BookKeyParameters.UPPER_PRICE_LIMIT.getKey(), upperPriceLimit);
+        parameters.put(BookKeyParameters.LOWER_PRICE_LIMIT.getKey(), lowerPriceLimit);
         return parameters;
     }
 }

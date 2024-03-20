@@ -12,6 +12,7 @@ public class TitleSpecificationProvider implements SpecificationProvider<Book> {
         return BookKeyParameters.TITLE.getKey();
     }
 
+    @Override
     public Specification<Book> getSpecification(String params) {
         return (root, query, criteriaBuilder)
                 -> root.get(getKey()).in(params);

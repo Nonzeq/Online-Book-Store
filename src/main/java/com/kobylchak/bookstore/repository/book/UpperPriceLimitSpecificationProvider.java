@@ -13,6 +13,7 @@ public class UpperPriceLimitSpecificationProvider implements SpecificationProvid
         return BookKeyParameters.UPPER_PRICE_LIMIT.getKey();
     }
 
+    @Override
     public Specification<Book> getSpecification(String param) {
         return (root, query, criteriaBuilder) -> criteriaBuilder.lessThanOrEqualTo(
                         root.get(BookKeyParameters.PRICE.getKey()),
