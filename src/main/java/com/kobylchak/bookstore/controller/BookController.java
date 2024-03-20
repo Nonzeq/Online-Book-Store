@@ -1,7 +1,8 @@
 package com.kobylchak.bookstore.controller;
 
-import com.kobylchak.bookstore.dto.BookDto;
-import com.kobylchak.bookstore.dto.CreateBookRequestDto;
+import com.kobylchak.bookstore.dto.book.BookDto;
+import com.kobylchak.bookstore.dto.book.BookSearchParameters;
+import com.kobylchak.bookstore.dto.book.CreateBookRequestDto;
 import com.kobylchak.bookstore.service.BookService;
 import java.util.List;
 import lombok.RequiredArgsConstructor;
@@ -47,5 +48,10 @@ public class BookController {
     @DeleteMapping("/{id}")
     public void deleteBook(@PathVariable Long id) {
         bookService.deleteById(id);
+    }
+
+    @GetMapping("/search")
+    public List<BookDto> search(BookSearchParameters bookSearchParameters) {
+        return bookService.search(bookSearchParameters);
     }
 }

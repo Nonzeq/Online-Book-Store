@@ -1,7 +1,8 @@
 package com.kobylchak.bookstore.service;
 
-import com.kobylchak.bookstore.dto.BookDto;
-import com.kobylchak.bookstore.dto.CreateBookRequestDto;
+import com.kobylchak.bookstore.dto.book.BookDto;
+import com.kobylchak.bookstore.dto.book.BookSearchParameters;
+import com.kobylchak.bookstore.dto.book.CreateBookRequestDto;
 import java.util.List;
 
 public interface BookService {
@@ -14,4 +15,7 @@ public interface BookService {
     BookDto updateBookById(Long id, CreateBookRequestDto bookRequestDto);
 
     void deleteById(Long id);
+
+    List<BookDto> search(BookSearchParameters searchParameters);
+
 }
