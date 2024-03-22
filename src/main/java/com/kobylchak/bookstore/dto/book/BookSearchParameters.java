@@ -2,6 +2,7 @@ package com.kobylchak.bookstore.dto.book;
 
 import com.kobylchak.bookstore.dto.SearchParameters;
 import com.kobylchak.bookstore.repository.book.BookKeyParameters;
+import jakarta.validation.constraints.Positive;
 import java.util.HashMap;
 import java.util.Map;
 import lombok.Data;
@@ -11,7 +12,9 @@ public class BookSearchParameters implements SearchParameters {
     private String title;
     private String author;
     private String isbn;
+    @Positive
     private String upperPriceLimit;
+    @Positive
     private String lowerPriceLimit;
 
     @Override
