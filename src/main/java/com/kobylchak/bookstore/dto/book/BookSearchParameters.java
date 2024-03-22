@@ -4,6 +4,7 @@ import com.kobylchak.bookstore.dto.SearchParameters;
 import com.kobylchak.bookstore.repository.book.BookKeyParameters;
 import java.util.HashMap;
 import java.util.Map;
+import jakarta.validation.constraints.Min;
 import lombok.Data;
 
 @Data
@@ -11,7 +12,9 @@ public class BookSearchParameters implements SearchParameters {
     private String title;
     private String author;
     private String isbn;
+    @Min(0)
     private String upperPriceLimit;
+    @Min(0)
     private String lowerPriceLimit;
 
     @Override
