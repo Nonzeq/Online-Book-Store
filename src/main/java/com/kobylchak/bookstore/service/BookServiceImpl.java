@@ -13,8 +13,6 @@ import java.util.Optional;
 import lombok.RequiredArgsConstructor;
 import org.springframework.data.jpa.domain.Specification;
 import org.springframework.stereotype.Service;
-import org.springframework.validation.BindException;
-import org.springframework.validation.ObjectError;
 
 @Service
 @RequiredArgsConstructor
@@ -32,9 +30,9 @@ public class BookServiceImpl implements BookService {
     @Override
     public List<BookDto> findAll() {
         return bookRepository.findAll()
-                .stream()
-                .map(bookMapper::toDto)
-                .toList();
+                             .stream()
+                             .map(bookMapper::toDto)
+                             .toList();
     }
 
     @Override
@@ -53,9 +51,9 @@ public class BookServiceImpl implements BookService {
     public List<BookDto> search(BookSearchParameters searchParameters) {
         Specification<Book> bookSpecification = bookSpecificationBuilder.build(searchParameters);
         return bookRepository.findAll(bookSpecification)
-                .stream()
-                .map(bookMapper::toDto)
-                .toList();
+                             .stream()
+                             .map(bookMapper::toDto)
+                             .toList();
     }
 
     @Override

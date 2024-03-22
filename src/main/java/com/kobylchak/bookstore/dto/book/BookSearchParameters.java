@@ -2,9 +2,9 @@ package com.kobylchak.bookstore.dto.book;
 
 import com.kobylchak.bookstore.dto.SearchParameters;
 import com.kobylchak.bookstore.repository.book.BookKeyParameters;
+import jakarta.validation.constraints.Min;
 import java.util.HashMap;
 import java.util.Map;
-import jakarta.validation.constraints.Min;
 import lombok.Data;
 
 @Data

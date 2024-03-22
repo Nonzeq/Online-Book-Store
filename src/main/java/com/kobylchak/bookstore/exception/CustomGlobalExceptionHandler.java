@@ -16,7 +16,6 @@ import org.springframework.web.servlet.mvc.method.annotation.ResponseEntityExcep
 @ControllerAdvice
 public class CustomGlobalExceptionHandler extends ResponseEntityExceptionHandler {
 
-
     @Override
     protected ResponseEntity<Object> handleMethodArgumentNotValid(
             MethodArgumentNotValidException ex,
@@ -31,12 +30,9 @@ public class CustomGlobalExceptionHandler extends ResponseEntityExceptionHandler
         return new ResponseEntity<>(exceptionData, headers, status);
     }
 
-    private List<ErrorData> getErrorMessages(
-            MethodArgumentNotValidException ex) {
+    private List<ErrorData> getErrorMessages(MethodArgumentNotValidException ex) {
         List<ObjectError> allErrors = ex.getBindingResult().getAllErrors();
-        return allErrors.stream()
-                .map(this::getMessage)
-                .toList();
+        return allErrors.stream().map(this::getMessage).toList();
     }
 
     private ErrorData getMessage(ObjectError objectError) {
