@@ -1,5 +1,6 @@
 package com.kobylchak.bookstore.validation;
 
+import java.util.Objects;
 import jakarta.validation.ConstraintValidator;
 import jakarta.validation.ConstraintValidatorContext;
 import org.springframework.beans.BeanWrapperImpl;
@@ -13,10 +14,7 @@ public class FieldMatchValidator implements ConstraintValidator<FieldMatch, Obje
         BeanWrapperImpl beanWrapper = new BeanWrapperImpl(value);
         Object propertyValue = beanWrapper.getPropertyValue(field);
         Object propertyValueMatch = beanWrapper.getPropertyValue(fieldMatch);
-        if (null != propertyValue) {
-            return propertyValue.equals(propertyValueMatch);
-        }
-        return false;
+        return Objects.equals(propertyValue, propertyValueMatch);
     }
 
     @Override
