@@ -1,4 +1,4 @@
-package com.kobylchak.bookstore.service;
+package com.kobylchak.bookstore.service.book;
 
 import com.kobylchak.bookstore.dto.book.BookDto;
 import com.kobylchak.bookstore.dto.book.BookSearchParameters;
