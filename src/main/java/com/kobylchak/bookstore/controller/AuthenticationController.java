@@ -25,5 +25,4 @@ public class AuthenticationController {
             throws RegistrationException {
         return registrationService.register(requestDto);
     }
-
 }

@@ -15,3 +15,5 @@ databaseChangeLog:
       file: db/changelog/changes/07-insert-users-into-users-table.yml
   - include:
       file: db/changelog/changes/08-insert-user_roles-table.yml
+  - include:
+      file: db/changelog/changes/09-add-is_deleted column-to-user-table.yml
