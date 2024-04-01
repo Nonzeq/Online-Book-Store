@@ -6,7 +6,6 @@ import com.kobylchak.bookstore.exception.RegistrationException;
 import com.kobylchak.bookstore.mapper.UserMapper;
 import com.kobylchak.bookstore.model.User;
 import com.kobylchak.bookstore.repository.user.UserRepository;
-import java.util.List;
 import lombok.RequiredArgsConstructor;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
@@ -28,13 +27,5 @@ public class RegistrationServiceImpl implements RegistrationService {
         requestDto.setPassword(passwordEncoder.encode(requestDto.getPassword()));
         User user = userRepository.save(userMapper.toModel(requestDto));
         return userMapper.toDto(user);
-    }
-
-    @Override
-    public List<UserResponseDto> getAll() {
-        List<User> all = userRepository.findAllUsers();
-        return all.stream()
-                   .map(userMapper::toDto)
-                   .toList();
     }
 }
