@@ -21,6 +21,8 @@
         </maven.checkstyle.plugin.configLocation>
         <lombok.mapstruct.binding.version>0.2.0</lombok.mapstruct.binding.version>
         <mapstruct.version>1.5.5.Final</mapstruct.version>
+        <admin.default.password>$2a$12$HohAGd75LDngYpnZQhVyMeex68fk6wf0lpU/HnMH2DYgNW5xUBOAe</admin.default.password>
+        <user.default.password>$2a$12$16r5H4/7toQI1Mhi6Z/SmuGkmmQXmu8jXBx9iUsOBuvdeuLOvWALW</user.default.password>
     </properties>
 
     <dependencies>
@@ -41,6 +43,11 @@
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-web</artifactId>
+        </dependency>
+
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-security</artifactId>
         </dependency>
 
         <dependency>
@@ -77,6 +84,7 @@
             <artifactId>mapstruct</artifactId>
             <version>${mapstruct.version}</version>
         </dependency>
+
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-test</artifactId>
