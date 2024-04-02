@@ -1,5 +1,6 @@
 package com.kobylchak.bookstore.controller;
 
+import com.kobylchak.bookstore.dto.user.UserLoginRequestDto;
 import com.kobylchak.bookstore.dto.user.UserRegistrationRequestDto;
 import com.kobylchak.bookstore.dto.user.UserResponseDto;
 import com.kobylchak.bookstore.exception.RegistrationException;
@@ -24,5 +25,9 @@ public class AuthenticationController {
     public UserResponseDto register(@RequestBody @Valid UserRegistrationRequestDto requestDto)
             throws RegistrationException {
         return registrationService.register(requestDto);
+    }
+
+    private UserLoginRequestDto login(UserLoginRequestDto requestDto) {
+
     }
 }
