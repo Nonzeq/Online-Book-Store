@@ -5,6 +5,7 @@ import com.kobylchak.bookstore.dto.book.BookSearchParameters;
 import com.kobylchak.bookstore.dto.book.CreateBookRequestDto;
 import com.kobylchak.bookstore.service.book.BookService;
 import io.swagger.v3.oas.annotations.Operation;
+import io.swagger.v3.oas.annotations.security.SecurityRequirement;
 import io.swagger.v3.oas.annotations.tags.Tag;
 import jakarta.validation.Valid;
 import java.util.List;
@@ -23,6 +24,7 @@ import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestController;
 
 @Tag(name = "Book management", description = "Endpoints for managing books")
+@SecurityRequirement(name = "bearerAuth")
 @RestController
 @RequestMapping("api/books")
 @RequiredArgsConstructor

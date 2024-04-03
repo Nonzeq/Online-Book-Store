@@ -4,6 +4,6 @@ import com.kobylchak.bookstore.dto.user.UserRegistrationRequestDto;
 import com.kobylchak.bookstore.dto.user.UserResponseDto;
 import com.kobylchak.bookstore.exception.RegistrationException;
 
-public interface RegistrationService {
+public interface UserService {
     UserResponseDto register(UserRegistrationRequestDto requestDto) throws RegistrationException;
 }
