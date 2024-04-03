@@ -6,6 +6,7 @@ import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.HttpStatusCode;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.access.AccessDeniedException;
 import org.springframework.validation.FieldError;
 import org.springframework.validation.ObjectError;
 import org.springframework.web.bind.MethodArgumentNotValidException;
@@ -28,6 +29,17 @@ public class CustomGlobalExceptionHandler extends ResponseEntityExceptionHandler
         exceptionData.setStatus(HttpStatus.BAD_REQUEST);
         exceptionData.setErrors(getErrorMessages(ex));
         return new ResponseEntity<>(exceptionData, headers, status);
+    }
+
+    @ExceptionHandler({AccessDeniedException.class})
+    public ResponseEntity<Object> handleAccessException(AccessDeniedException exception) {
+        ResponseExceptionData exceptionData = new ResponseExceptionData();
+        exceptionData.setTimestamp(LocalDateTime.now());
+        exceptionData.setStatus(HttpStatus.FORBIDDEN);
+        ErrorData errorData = new ErrorData();
+        errorData.setMessage(exception.getMessage());
+        exceptionData.setErrors(List.of(errorData));
+        return new ResponseEntity<>(exceptionData, HttpStatus.INTERNAL_SERVER_ERROR);
     }
 
     @ExceptionHandler({RegistrationException.class})
