@@ -21,3 +21,7 @@ databaseChangeLog:
       file: db/changelog/changes/10-create-category-table.yml
   - include:
       file: db/changelog/changes/11-create-book_categories-table.yml
+  - include:
+      file: db/changelog/changes/12-insert-categories-into-categories-table.yml
+  - include:
+      file: db/changelog/changes/13-insert-into-book_categories.yml

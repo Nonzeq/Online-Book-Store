@@ -1,0 +1,50 @@
+databaseChangeLog:
+  - changeSet:
+      id: insert-categories
+      author: bohda
+      changes:
+        - insert:
+            tableName: categories
+            columns:
+              - column:
+                  name: name
+                  value: Romance novel
+              - column:
+                  name: description
+                  value: A romance novel or romantic novel is a genre fiction novel that primary focuses on the relationship and romantic love between two people, typically with an emotionally satisfying and optimistic ending.
+        - insert:
+            tableName: categories
+            columns:
+              - column:
+                  name: name
+                  value: Horror
+              - column:
+                  name: description
+                  value: Horror is a genre that seeks to provoke fear, terror, shock, and other similar kinds of feelings in readers.
+        - insert:
+            tableName: categories
+            columns:
+              - column:
+                  name: name
+                  value: Thriller
+              - column:
+                  name: description
+                  value: Thriller is a genre of fiction with numerous, often overlapping, subgenres, including crime, horror, and detective fiction. Thrillers are characterized and defined by the moods they elicit, giving their audiences heightened feelings of suspense, excitement.
+        - insert:
+            tableName: categories
+            columns:
+              - column:
+                  name: name
+                  value: Short story
+              - column:
+                  name: description
+                  value: A short story is a piece of prose fiction that can typically be read in a single sitting and focuses on a self-contained incident or series of linked incidents, with the intent of evoking a single effect or mood.
+        - insert:
+            tableName: categories
+            columns:
+              - column:
+                  name: name
+                  value: Adventure
+              - column:
+                  name: description
+                  value: Action & Adventure. Action and adventure novels feature a main character on a quest to achieve an ultimate goal.
