@@ -33,20 +33,22 @@ public class CategoryController {
 
     @PostMapping
     @PreAuthorize("hasRole('ADMIN')")
+    @Operation(summary = "Create category",
+               description = "API for creating new category")
     public CategoryDto createCategory(@RequestBody @Valid CreateCategoryRequestDto requestDto) {
         return categoryService.save(requestDto);
     }
 
-    @PreAuthorize("hasRole('USER')")
     @GetMapping
+    @PreAuthorize("hasRole('USER')")
     @Operation(summary = "Get all categories",
                description = "API for getting list of all available categories")
-    public List<CategoryDto> getAll(Pageable pageable) {
+    public List<CategoryDto> getAllCategories(Pageable pageable) {
         return categoryService.findAll(pageable);
     }
 
-    @PreAuthorize("hasRole('USER')")
     @GetMapping("/{id}")
+    @PreAuthorize("hasRole('USER')")
     @Operation(summary = "Get category by id",
                description = "API for getting category by id")
     public CategoryDto getCategoryById(@PathVariable Long id) {

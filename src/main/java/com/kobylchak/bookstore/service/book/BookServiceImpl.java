@@ -15,6 +15,7 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.jpa.domain.Specification;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 @Service
 @RequiredArgsConstructor
@@ -24,6 +25,7 @@ public class BookServiceImpl implements BookService {
     private final BookSpecificationBuilder bookSpecificationBuilder;
 
     @Override
+    @Transactional
     public BookDto save(CreateBookRequestDto requestDto) {
         Book book = bookRepository.save(bookMapper.toModel(requestDto));
         return bookMapper.toDto(book);
@@ -31,7 +33,7 @@ public class BookServiceImpl implements BookService {
 
     @Override
     public List<BookDto> findAll(Pageable pageable) {
-        return bookMapper.toListDto(bookRepository.findAllWithCategories(pageable).getContent());
+        return bookMapper.toDtos(bookRepository.findAllWithCategories(pageable).getContent());
     }
 
     @Override
@@ -49,12 +51,13 @@ public class BookServiceImpl implements BookService {
     @Override
     public List<BookDto> search(BookSearchParameters searchParameters, Pageable pageable) {
         Specification<Book> bookSpecification = bookSpecificationBuilder.build(searchParameters);
-        return bookMapper.toListDto(bookRepository.findAll(
+        return bookMapper.toDtos(bookRepository.findAll(
                 bookSpecification,
                 pageable).getContent());
     }
 
     @Override
+    @Transactional
     public BookDto updateBookById(Long id, CreateBookRequestDto bookRequestDto) {
         if (!bookRepository.existsById(id)) {
             throw new EntityNotFoundException("Book by id: " + id + " not found");
@@ -65,7 +68,9 @@ public class BookServiceImpl implements BookService {
     }
 
     public List<BookDtoWithoutCategoryIds> getBooksByCategoryId(Long id, Pageable pageable) {
-        List<Book> allByCategoryId = bookRepository.findAllByCategoryId(id, pageable).getContent();
-        return bookMapper.toListWithoutCategoryIdsDto(allByCategoryId);
+        List<Book> booksByCategoryId = bookRepository
+                                               .findAllByCategoryId(id, pageable)
+                                               .getContent();
+        return bookMapper.toListWithoutCategoryIdsDto(booksByCategoryId);
     }
 }

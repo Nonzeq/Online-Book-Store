@@ -10,6 +10,7 @@ import java.util.List;
 import lombok.RequiredArgsConstructor;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 @Service
 @RequiredArgsConstructor
@@ -19,7 +20,7 @@ public class CategoryServiceImpl implements CategoryService {
 
     @Override
     public List<CategoryDto> findAll(Pageable pageable) {
-        return categoryMapper.toListDto(categoryRepository.findAll(pageable).getContent());
+        return categoryMapper.toDtos(categoryRepository.findAll(pageable).getContent());
     }
 
     @Override
@@ -34,12 +35,14 @@ public class CategoryServiceImpl implements CategoryService {
     }
 
     @Override
+    @Transactional
     public CategoryDto save(CreateCategoryRequestDto categoryDto) {
         Category category = categoryMapper.toModel(categoryDto);
         return categoryMapper.toDto(categoryRepository.save(category));
     }
 
     @Override
+    @Transactional
     public CategoryDto update(Long id, CreateCategoryRequestDto categoryDto) {
         if (categoryRepository.existsById(id)) {
             Category category = categoryMapper.toModel(categoryDto);
