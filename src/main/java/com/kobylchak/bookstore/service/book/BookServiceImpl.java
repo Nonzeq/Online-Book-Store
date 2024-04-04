@@ -71,6 +71,6 @@ public class BookServiceImpl implements BookService {
         List<Book> booksByCategoryId = bookRepository
                                                .findAllByCategoryId(id, pageable)
                                                .getContent();
-        return bookMapper.toListWithoutCategoryIdsDto(booksByCategoryId);
+        return bookMapper.toWithoutCategoryIdsDto(booksByCategoryId);
     }
 }
