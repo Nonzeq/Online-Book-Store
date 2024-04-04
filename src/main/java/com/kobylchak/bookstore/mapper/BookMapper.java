@@ -19,7 +19,7 @@ public interface BookMapper {
     @Mapping(target = "categoryIds", ignore = true)
     BookDto toDto(Book book);
 
-    List<BookDtoWithoutCategoryIds> toListWithoutCategoryIdsDto(List<Book> books);
+    List<BookDtoWithoutCategoryIds> toWithoutCategoryIdsDto(List<Book> books);
 
     List<BookDto> toDtos(List<Book> books);
 
@@ -31,7 +31,7 @@ public interface BookMapper {
         bookDto.setCategoryIds(categoryIds);
     }
 
-    BookDtoWithoutCategoryIds toWithoutCategoryIdsDtos(Book book);
+    BookDtoWithoutCategoryIds toWithoutCategoryIdDto(Book book);
 
     Book toModel(CreateBookRequestDto requestDto);
 }
