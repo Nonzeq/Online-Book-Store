@@ -1,6 +1,7 @@
 package com.kobylchak.bookstore.service.book;
 
 import com.kobylchak.bookstore.dto.book.BookDto;
+import com.kobylchak.bookstore.dto.book.BookDtoWithoutCategoryIds;
 import com.kobylchak.bookstore.dto.book.BookSearchParameters;
 import com.kobylchak.bookstore.dto.book.CreateBookRequestDto;
 import java.util.List;
@@ -19,4 +20,5 @@ public interface BookService {
 
     List<BookDto> search(BookSearchParameters searchParameters, Pageable pageable);
 
+    List<BookDtoWithoutCategoryIds> getBooksByCategoryId(Long id, Pageable pageable);
 }
