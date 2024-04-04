@@ -25,3 +25,5 @@ databaseChangeLog:
       file: db/changelog/changes/12-insert-categories-into-categories-table.yml
   - include:
       file: db/changelog/changes/13-insert-into-book_categories.yml
+  - include:
+      file: db/changelog/changes/14-add_is_deleted-to-categories.yml

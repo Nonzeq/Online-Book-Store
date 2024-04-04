@@ -70,7 +70,7 @@ public class BookController {
         bookService.deleteById(id);
     }
 
-    @PreAuthorize("hasAnyRole('ADMIN', 'USER')")
+    @PreAuthorize("hasRole('USER')")
     @GetMapping("/search")
     @Operation(summary = "Seaching books with parameters", description = "API for seaching books")
     public List<BookDto> search(@Valid BookSearchParameters bookSearchParameters,

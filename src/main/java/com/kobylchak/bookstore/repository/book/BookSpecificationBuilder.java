@@ -16,7 +16,7 @@ public class BookSpecificationBuilder implements SpecificationBuilder<Book> {
 
     @Override
     public Specification<Book> build(SearchParameters searchParameters) {
-        Specification<Book> spec = Specification.where(null);
+        Specification<Book> spec = Specification.where(getSpecWithCategoryJoin());
         Map<String, String> parameters = searchParameters.getParameters();
         for (Map.Entry<String, String> bookKeyValueParameter : parameters.entrySet()) {
             String keyParameter = bookKeyValueParameter.getKey();
@@ -30,5 +30,12 @@ public class BookSpecificationBuilder implements SpecificationBuilder<Book> {
             }
         }
         return spec;
+    }
+
+    private Specification<Book> getSpecWithCategoryJoin() {
+        return (root, query, criteriaBuilder) -> {
+            root.fetch("categories");
+            return null;
+        };
     }
 }
