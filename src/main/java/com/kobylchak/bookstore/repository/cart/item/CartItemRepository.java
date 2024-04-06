@@ -1,7 +1,6 @@
 package com.kobylchak.bookstore.repository.cart.item;
 
 import com.kobylchak.bookstore.model.CartItem;
-import com.kobylchak.bookstore.model.ShoppingCart;
 import java.util.Set;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
