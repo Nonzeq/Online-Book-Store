@@ -35,7 +35,6 @@ public interface CartItemMapper {
         Book book = bookRepository.findById(requestDto.getBookId())
                             .orElseThrow(() -> new EntityNotFoundException("Book not found"));
         cartItem.setBook(book);
-
     }
 
     @AfterMapping

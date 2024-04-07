@@ -22,7 +22,6 @@ public class CartItemServiceImpl implements CartItemService {
     private final BookRepository bookRepository;
 
     @Override
-    @Transactional
     public ShoppingCart addItem(CartItemRequestDto requestDto, ShoppingCart shoppingCart) {
         CartItem cartItem = cartItemMapper.toModel(requestDto, bookRepository, shoppingCart);
         cartItem.setShoppingCart(shoppingCart);
@@ -32,26 +31,29 @@ public class CartItemServiceImpl implements CartItemService {
     }
 
     @Override
+    @Transactional
     public ShoppingCart updateItem(
             CartItemRequestUpdateDto requestDto,
             ShoppingCart shoppingCart,
             Long id) {
-        Optional<CartItem> updatedItem = shoppingCart.getCartItems()
+        Optional<CartItem> itemById = shoppingCart.getCartItems()
                                                  .stream()
                                                  .filter(cartItem -> Objects.equals(
-                                                         cartItem.getId(),
-                                                         id))
+                                                         cartItem.getId(), id))
                                                  .findFirst();
-        if (updatedItem.isPresent()) {
-            CartItem cartItem = cartItemRepository.findById(id).orElseThrow(
+        if (itemById.isPresent()) {
+            CartItem cartItem = cartItemRepository.findByIdWithBook(id).orElseThrow(
                     () -> new EntityNotFoundException("CartItem not found"));
             cartItem.setQuantity(requestDto.getQuantity());
-            shoppingCart.getCartItems().add(cartItemRepository.save(cartItem));
+            cartItemRepository.save(cartItem);
+            shoppingCart.setCartItems(cartItemRepository
+                                              .findByShoppingCartId(shoppingCart.getId()));
         }
         return shoppingCart;
     }
 
     @Override
+    @Transactional
     public ShoppingCart deleteItem(
             ShoppingCart shoppingCart,
             Long id) {
