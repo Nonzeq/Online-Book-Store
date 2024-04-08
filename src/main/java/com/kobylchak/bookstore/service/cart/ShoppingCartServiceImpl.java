@@ -46,7 +46,13 @@ public class ShoppingCartServiceImpl implements ShoppingCartService {
         return shoppingCartMapper.toDto(shoppingCart);
     }
 
-    private ShoppingCart getShoppingCartByUser(User user) {
+    @Override
+    public void deleteShoppingCart(Long id) {
+        shoppingCartRepository.deleteById(id);
+    }
+
+    @Override
+    public ShoppingCart getShoppingCartByUser(User user) {
         Optional<ShoppingCart> cartByUser = shoppingCartRepository.findByUserEmail(user.getEmail());
         if (cartByUser.isPresent()) {
             return cartByUser.get();

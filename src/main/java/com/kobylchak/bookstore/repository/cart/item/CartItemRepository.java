@@ -9,7 +9,7 @@ import org.springframework.data.jpa.repository.Query;
 public interface CartItemRepository extends JpaRepository<CartItem, Long> {
     @Query("from CartItem ci join fetch ci.book join fetch ci.shoppingCart shc "
             + "where shc.id = :id")
-    Set<CartItem> findByShoppingCartId(Long id);
+    Set<CartItem> findAllByShoppingCartId(Long id);
 
     @Query("from CartItem ci left join fetch ci.shoppingCart left join fetch ci.book "
             + "where ci.id = :id")

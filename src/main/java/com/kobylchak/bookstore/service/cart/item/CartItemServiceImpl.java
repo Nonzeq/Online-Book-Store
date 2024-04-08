@@ -47,7 +47,7 @@ public class CartItemServiceImpl implements CartItemService {
             cartItem.setQuantity(requestDto.getQuantity());
             cartItemRepository.save(cartItem);
             shoppingCart.setCartItems(cartItemRepository
-                                              .findByShoppingCartId(shoppingCart.getId()));
+                                              .findAllByShoppingCartId(shoppingCart.getId()));
         }
         return shoppingCart;
     }
@@ -62,7 +62,7 @@ public class CartItemServiceImpl implements CartItemService {
                                                          cartItem.getId(), id))
                                                  .findFirst();
         deletedItem.ifPresent(cartItemRepository::delete);
-        shoppingCart.setCartItems(cartItemRepository.findByShoppingCartId(shoppingCart.getId()));
+        shoppingCart.setCartItems(cartItemRepository.findAllByShoppingCartId(shoppingCart.getId()));
         return shoppingCart;
     }
 }

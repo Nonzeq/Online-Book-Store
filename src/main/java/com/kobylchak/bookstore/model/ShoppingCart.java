@@ -1,5 +1,6 @@
 package com.kobylchak.bookstore.model;
 
+import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.FetchType;
@@ -21,7 +22,7 @@ import org.hibernate.annotations.SQLRestriction;
 @Table(name = "shopping_carts")
 @Getter
 @Setter
-@SQLDelete(sql = "UPDATE shopping_carts set is_deleted = true WHERE user_id=?")
+@SQLDelete(sql = "UPDATE shopping_carts set is_deleted = true WHERE id=?")
 @SQLRestriction("is_deleted=FALSE")
 public class ShoppingCart {
     @Id
@@ -30,7 +31,7 @@ public class ShoppingCart {
     @OneToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "user_id")
     private User user;
-    @OneToMany(mappedBy = "shoppingCart")
+    @OneToMany(mappedBy = "shoppingCart", cascade = CascadeType.REMOVE)
     @Column(name = "cart_items")
     private Set<CartItem> cartItems = new HashSet<>();
     @Column(name = "is_deleted")

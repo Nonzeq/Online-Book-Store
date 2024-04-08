@@ -31,6 +31,18 @@ public class CustomGlobalExceptionHandler extends ResponseEntityExceptionHandler
         return new ResponseEntity<>(exceptionData, headers, status);
     }
 
+    @ExceptionHandler({EmptyShoppingCartException.class})
+    public ResponseEntity<Object> handleEmptyShoppingCartException(
+            EmptyShoppingCartException exception) {
+        ResponseExceptionData exceptionData = new ResponseExceptionData();
+        exceptionData.setTimestamp(LocalDateTime.now());
+        exceptionData.setStatus(HttpStatus.NOT_ACCEPTABLE);
+        ErrorData errorData = new ErrorData();
+        errorData.setMessage(exception.getMessage());
+        exceptionData.setErrors(List.of(errorData));
+        return new ResponseEntity<>(exceptionData, HttpStatus.NOT_ACCEPTABLE);
+    }
+
     @ExceptionHandler({AccessDeniedException.class})
     public ResponseEntity<Object> handleAccessException(AccessDeniedException exception) {
         ResponseExceptionData exceptionData = new ResponseExceptionData();
@@ -39,7 +51,7 @@ public class CustomGlobalExceptionHandler extends ResponseEntityExceptionHandler
         ErrorData errorData = new ErrorData();
         errorData.setMessage(exception.getMessage());
         exceptionData.setErrors(List.of(errorData));
-        return new ResponseEntity<>(exceptionData, HttpStatus.INTERNAL_SERVER_ERROR);
+        return new ResponseEntity<>(exceptionData, HttpStatus.FORBIDDEN);
     }
 
     @ExceptionHandler({RegistrationException.class})
