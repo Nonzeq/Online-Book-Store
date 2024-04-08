@@ -31,3 +31,7 @@ databaseChangeLog:
       file: db/changelog/changes/15-create-cart_items-table.yml
   - include:
       file: db/changelog/changes/16-create-shopping_cart-table.yml
+  - include:
+      file: db/changelog/changes/17-create-orders-table.yml
+  - include:
+      file: db/changelog/changes/18-create-order_items-table.yml
