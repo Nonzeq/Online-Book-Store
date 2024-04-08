@@ -42,7 +42,7 @@ public class Order {
     private BigDecimal total;
 
     @Column(nullable = false, name = "order_date")
-    private LocalDateTime orderDate;
+    private LocalDateTime orderDate = LocalDateTime.now();
 
     @Column(nullable = false, name = "shipping_address")
     private String shippingAddress;
@@ -54,7 +54,7 @@ public class Order {
     @Column(nullable = false, name = "is_deleted")
     private boolean isDeleted = false;
 
-    enum Status {
+    public enum Status {
         COMPLETED,
         PENDING,
         DELIVERED,
