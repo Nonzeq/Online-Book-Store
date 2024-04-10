@@ -1,0 +1,155 @@
+databaseChangeLog:
+  - changeSet:
+      id: insert-books
+      author: bohdan
+      changes:
+        - insert:
+            tableName: books
+            columns:
+              - column:
+                  name: title
+                  value: American Psycho
+              - column:
+                  name: author
+                  value: Bret Easton Ellis
+              - column:
+                  name: isbn
+                  value: gdfdfg3413g4646bhhkl
+              - column:
+                  name: price
+                  value: 350
+        - insert:
+            tableName: books
+            columns:
+              - column:
+                  name: title
+                  value: Don Quixote
+              - column:
+                  name: author
+                  value: Miguel de Cervantes
+              - column:
+                  name: isbn
+                  value: gd4355554657343bq23
+              - column:
+                  name: price
+                  value: 450
+        - insert:
+            tableName: books
+            columns:
+              - column:
+                  name: title
+                  value: Don Quixote
+              - column:
+                  name: author
+                  value: Miguel de Cervantes
+              - column:
+                  name: isbn
+                  value: gd4355554657343aszv
+              - column:
+                  name: price
+                  value: 450
+        - insert:
+            tableName: books
+            columns:
+              - column:
+                  name: title
+                  value: David Copperfield
+              - column:
+                  name: author
+                  value: Charles Dickens
+              - column:
+                  name: isbn
+                  value: gd43555546sdsd5734ad3
+              - column:
+                  name: price
+                  value: 400
+        - insert:
+            tableName: books
+            columns:
+              - column:
+                  name: title
+                  value: The Great Gatsby
+              - column:
+                  name: author
+                  value: F. Scott Fitzgerald
+              - column:
+                  name: isbn
+                  value: gd43555afesd54657w343
+              - column:
+                  name: price
+                  value: 550
+        - insert:
+            tableName: books
+            columns:
+              - column:
+                  name: title
+                  value: Middlemarch
+              - column:
+                  name: author
+                  value: George Eliot
+              - column:
+                  name: isbn
+                  value: gd43555dd5465feasd7343
+              - column:
+                  name: price
+                  value: 300
+        - insert:
+            tableName: books
+            columns:
+              - column:
+                  name: title
+                  value: Women
+              - column:
+                  name: author
+                  value: Charles Bukowski
+              - column:
+                  name: isbn
+                  value: gd43sd55erezzf554657343
+              - column:
+                  name: price
+                  value: 330
+        - insert:
+            tableName: books
+            columns:
+              - column:
+                  name: title
+                  value: Ham on Rye
+              - column:
+                  name: author
+                  value: Charles Bukowski
+              - column:
+                  name: isbn
+                  value: gd43dsda5asdaq5554657343
+              - column:
+                  name: price
+                  value: 450
+        - insert:
+            tableName: books
+            columns:
+              - column:
+                  name: title
+                  value: Nineteen Eighty-Four
+              - column:
+                  name: author
+                  value: George Orwell
+              - column:
+                  name: isbn
+                  value: gd43555qwedaswsd54657343c
+              - column:
+                  name: price
+                  value: 400
+        - insert:
+            tableName: books
+            columns:
+              - column:
+                  name: title
+                  value: Animal Farm
+              - column:
+                  name: author
+                  value: George Orwell
+              - column:
+                  name: isbn
+                  value: gd43555sdas54657343vz
+              - column:
+                  name: price
+                  value: 450

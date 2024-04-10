@@ -33,7 +33,7 @@ public class OrderController {
     private final OrderService orderService;
 
     @GetMapping
-    @PreAuthorize("hasRole('USER')")
+    @PreAuthorize("hasRole('ROLE_USER')")
     @Operation(summary = "Get users's orders",
                description = "API for getting all user's orders")
     public List<OrderDto> getOrders(Authentication authentication, Pageable pageable) {
@@ -42,7 +42,7 @@ public class OrderController {
     }
 
     @PatchMapping("/{id}")
-    @PreAuthorize("hasRole('ADMIN')")
+    @PreAuthorize("hasRole('ROLE_ADMIN')")
     @Operation(summary = "Patch order status",
                description = "API for patching order status by id")
     public void updateStatus(
@@ -52,7 +52,7 @@ public class OrderController {
     }
 
     @PostMapping
-    @PreAuthorize("hasRole('USER')")
+    @PreAuthorize("hasRole('ROLE_USER')")
     @Operation(summary = "Create order",
                description = "API for creating order")
     public OrderDto createOrder(
@@ -63,7 +63,7 @@ public class OrderController {
     }
 
     @GetMapping("/{orderId}/items")
-    @PreAuthorize("hasRole('USER')")
+    @PreAuthorize("hasRole('ROLE_USER')")
     @Operation(summary = "Get user's order items",
                description = "API for getting user's order items")
     public Set<OrderItemDto> getOrderItems(
@@ -75,7 +75,7 @@ public class OrderController {
     }
 
     @GetMapping("/{orderId}/items/{itemId}")
-    @PreAuthorize("hasRole('USER')")
+    @PreAuthorize("hasRole('ROLE_USER')")
     @Operation(summary = "Get order item from user's order",
                description = "API for getting order item from user's order by order id and item id")
     public OrderItemDto getOrderItem(
