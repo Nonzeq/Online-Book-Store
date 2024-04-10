@@ -29,7 +29,7 @@ public class ShoppingCartController {
     private final ShoppingCartService shoppingCartService;
 
     @GetMapping
-    @PreAuthorize("hasRole('USER')")
+    @PreAuthorize("hasRole('ROLE_USER')")
     @Operation(summary = "Get shopping cart",
                description = "API for getting user's shopping cart")
     public ShoppingCartDto getShoppingCart(Authentication authentication) {
@@ -38,7 +38,7 @@ public class ShoppingCartController {
     }
 
     @PostMapping
-    @PreAuthorize("hasRole('USER')")
+    @PreAuthorize("hasRole('ROLE_USER')")
     @Operation(summary = "Add item to shopping cart",
                description = "API for adding item to user's shopping cart")
     public ShoppingCartDto addItem(@RequestBody CartItemRequestDto requestDto,
@@ -48,7 +48,7 @@ public class ShoppingCartController {
     }
 
     @PutMapping("/cart-items/{id}")
-    @PreAuthorize("hasRole('USER')")
+    @PreAuthorize("hasRole('ROLE_USER')")
     @Operation(summary = "Update item in shopping cart",
                description = "API for updating item in user's shopping cart")
     public ShoppingCartDto updateItem(@RequestBody CartItemRequestUpdateDto requestDto,
@@ -59,7 +59,7 @@ public class ShoppingCartController {
     }
 
     @DeleteMapping("/cart-items/{id}")
-    @PreAuthorize("hasRole('USER')")
+    @PreAuthorize("hasRole('ROLE_USER')")
     @Operation(summary = "Delete item from shopping cart",
                description = "API for deleting item from user's shopping cart")
     public ShoppingCartDto deleteItem(@PathVariable Long id, Authentication authentication) {
