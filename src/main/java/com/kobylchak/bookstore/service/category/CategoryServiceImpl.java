@@ -2,10 +2,10 @@ package com.kobylchak.bookstore.service.category;
 
 import com.kobylchak.bookstore.dto.category.CategoryDto;
 import com.kobylchak.bookstore.dto.category.CreateCategoryRequestDto;
+import com.kobylchak.bookstore.exception.EntityNotFoundException;
 import com.kobylchak.bookstore.mapper.CategoryMapper;
 import com.kobylchak.bookstore.model.Category;
 import com.kobylchak.bookstore.repository.category.CategoryRepository;
-import jakarta.persistence.EntityNotFoundException;
 import java.util.List;
 import lombok.RequiredArgsConstructor;
 import org.springframework.data.domain.Pageable;

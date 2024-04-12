@@ -4,11 +4,11 @@ import com.kobylchak.bookstore.dto.book.BookDto;
 import com.kobylchak.bookstore.dto.book.BookDtoWithoutCategoryIds;
 import com.kobylchak.bookstore.dto.book.BookSearchParameters;
 import com.kobylchak.bookstore.dto.book.CreateBookRequestDto;
+import com.kobylchak.bookstore.exception.EntityNotFoundException;
 import com.kobylchak.bookstore.mapper.BookMapper;
 import com.kobylchak.bookstore.model.Book;
 import com.kobylchak.bookstore.repository.book.BookRepository;
 import com.kobylchak.bookstore.repository.book.BookSpecificationBuilder;
-import jakarta.persistence.EntityNotFoundException;
 import java.util.List;
 import java.util.Optional;
 import lombok.RequiredArgsConstructor;
@@ -40,7 +40,7 @@ public class BookServiceImpl implements BookService {
     public BookDto getBookById(Long id) {
         Optional<Book> bookById = bookRepository.findBookByIdWithCategories(id);
         return bookMapper.toDto(bookById.orElseThrow(
-            () -> new EntityNotFoundException("Book by id: " + id + "not found")));
+                () -> new EntityNotFoundException("Book by id: " + id + "not found")));
     }
 
     @Override
@@ -67,6 +67,7 @@ public class BookServiceImpl implements BookService {
         return bookMapper.toDto(bookRepository.save(updatedBook));
     }
 
+    @Override
     public List<BookDtoWithoutCategoryIds> getBooksByCategoryId(Long id, Pageable pageable) {
         List<Book> booksByCategoryId = bookRepository
                                                .findAllByCategoryId(id, pageable)
