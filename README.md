@@ -28,7 +28,7 @@
 
 ## Database Scheme
 
-![sheme](scheme.png)
+![sheme](assets/images/scheme.png)
 
 ## Features
 
