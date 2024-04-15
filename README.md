@@ -6,7 +6,9 @@
 > and securely purchase items online. 
 > Also, administrators have access for managing inventory, processing orders, and analyzing sales data.
 
-#  Tech stack
+##  Tech stack
+
+---
 - **Backend:** Spring Framework (Spring Boot, Spring Security, Spring Data JPA)
 
 - **Database:** MySQL
@@ -27,9 +29,14 @@
 
 ## Database Scheme
 
+---
+
 ![sheme](scheme.png)
 
+
 ## Features
+
+---
 
 ### Authentication
 
@@ -561,6 +568,9 @@
 </details>
 
 ###  Challenges
+
+---
+
 #### Global Exception Handling:
 Developed a centralized global exception handler that intercepts 
 and processes exceptions thrown by controllers, services, and other components. 
@@ -571,6 +581,8 @@ standardize error responses returned to clients, including HTTP status codes,
 error messages, and additional metadata.
 
 ###  How to run Book Store API
+
+---
 
 1) Install Docker
 2) Clone current project repository
