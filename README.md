@@ -575,7 +575,7 @@ error messages, and additional metadata.
 1) Install Docker
 2) Clone current project repository
 3) Add your ".env" file (see .env.example)
-3) Configure a ".env" file with necessary environment variables
-4) Run the command mvn clean package
-5) Use docker-compose up to run Docker container
-6) Access the locally running application at http://localhost:{SPRING_LOCAL_PORT}/api
+4) Configure a ".env" file with necessary environment variables
+5) Run the command mvn clean package
+6) Use docker-compose up to run Docker container
+7) Access the locally running application at http://localhost:{SPRING_LOCAL_PORT}/api
