@@ -8,7 +8,6 @@
 
 ##  Tech stack
 
----
 - **Backend:** Spring Framework (Spring Boot, Spring Security, Spring Data JPA)
 
 - **Database:** MySQL
@@ -29,14 +28,9 @@
 
 ## Database Scheme
 
----
-
 ![sheme](scheme.png)
 
-
 ## Features
-
----
 
 ### Authentication
 
@@ -567,9 +561,7 @@
 
 </details>
 
-###  Challenges
-
----
+##  Challenges
 
 #### Global Exception Handling:
 Developed a centralized global exception handler that intercepts 
@@ -580,9 +572,7 @@ Also, I implemented error response DTOs (Data Transfer Objects) to format and
 standardize error responses returned to clients, including HTTP status codes, 
 error messages, and additional metadata.
 
-###  How to run Book Store API
-
----
+##  How to run Book Store API
 
 1) Install Docker
 2) Clone current project repository
